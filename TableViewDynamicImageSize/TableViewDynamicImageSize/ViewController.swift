@@ -25,7 +25,7 @@ class ViewController: UIViewController {
                           "https://cdn.pixabay.com/photo/2014/10/16/13/33/sun-flower-491173_150.jpg",
                           "https://pixabay.com/get/ed3cb00e2ff71c2ad65a5854e3494297eb71e1c818b5184790f4c970a0eb_640.jpg"]
     for str in urls {
-      let item = DataSource.init(imageURL: str, desc: str)
+      let item = DataSource.init(imageURL: str, desc: str + str)
       dataSource.append(item)
     }
     tableView.dataSource = self
@@ -55,6 +55,10 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         if let image = img {
           cell.spinner.stopAnimating()
           if self.heightCache[url?.absoluteString ?? ""] ?? 0 < CGFloat(1) {
+//                let aspectRatioImg = image.size.height / image.size.width
+//            
+//                let a =  tableView.bounds.width - 32 + aspectRatioImg
+//             self.heightCache[url?.absoluteString ?? ""] = a + (self.dataSource[indexPath.row].desc.height(withConstrainedWidth: self.tableView.bounds.width - 52, font: UIFont.systemFont(ofSize: 17))) + 40
             self.heightCache[url?.absoluteString ?? ""] = image.size.height + (self.dataSource[indexPath.row].desc.height(withConstrainedWidth: self.tableView.bounds.width - 52, font: UIFont.systemFont(ofSize: 17))) + 40
             tableView.beginUpdates()
             tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
@@ -74,7 +78,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
     return dataSource.count
   }
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    return heightCache[dataSource[indexPath.row].imageURL] ?? (self.dataSource[indexPath.row].desc.height(withConstrainedWidth: self.tableView.bounds.width - 52, font: UIFont.systemFont(ofSize: 17))) + 80
+    return heightCache[dataSource[indexPath.row].imageURL] ?? (self.dataSource[indexPath.row].desc.height(withConstrainedWidth: self.tableView.bounds.width - 52, font: UIFont.systemFont(ofSize: 17))) + 40
     
   }
 }
