@@ -20,10 +20,29 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
-    let urls: [String] = ["https://cdn.pixabay.com/photo/2013/10/15/09/20/flower-195897_150.jpg",
-                          "https://pixabay.com/get/e83cb40721f31c2ad65a5854e3494297eb71e1c818b5184790f4c970a0eb_640.jpged3cb00e2ff71c2ad65a5854e3494297eb71e1c818b5184790f4c970a0eb_640.jpg",
-                          "https://cdn.pixabay.com/photo/2014/10/16/13/33/sun-flower-491173_150.jpg",
-                          "https://pixabay.com/get/ed3cb00e2ff71c2ad65a5854e3494297eb71e1c818b5184790f4c970a0eb_640.jpg"]
+    let urls: [String] = ["https://i.ytimg.com/vi/0speIS4LUSA/hqdefault.jpg",
+                          "https://i.ytimg.com/vi/XLsJoTD1oI0/hqdefault.jpg",
+                          "https://i.ytimg.com/vi/ZRzWAIs0Vxs/hqdefault.jpg",
+                          "https://i.ytimg.com/vi/pqxqXiJqEq8/hqdefault.jpg",
+                          "https://i.ytimg.com/vi/5Vvvfggbe7A/hqdefault.jpg",
+                          "https://i.ytimg.com/vi/1xzHHbzPTwE/hqdefault.jpg",
+                          "https://i.ytimg.com/vi/mUraX_DUFX0/hqdefault.jpg",
+                          "https://i.ytimg.com/vi/mheDX2tBzq0/hqdefault.jpg",
+                          "https://i.ytimg.com/vi/mheDX2tBzq0/hqdefault.jpg",
+                          "https://scontent.cdninstagram.com/t51.2885-15/e35/18014020_137818996759109_5258095883718754304_n.jpg",
+                          "https://scontent.cdninstagram.com/t51.2885-15/e35/17662936_276100486193210_4162516758063742976_n.jpg",
+                          "https://scontent.cdninstagram.com/t51.2885-15/e35/17934180_246131935860536_3712811752069529600_n.jpg",
+                          "https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/17882378_702189843298794_6125471830590357504_n.jpg",
+                          "https://scontent.cdninstagram.com/t51.2885-15/e35/17818686_611247545735820_5670987187420659712_n.jpg",
+                          "https://scontent.cdninstagram.com/t51.2885-15/e35/17819212_1858621431043944_5977630792744960000_n.jpg",
+                          "https://i.ytimg.com/vi/-304HavXfVw/hqdefault.jpg",
+                          "https://scontent.cdninstagram.com/t51.2885-15/e35/c2.0.465.465/17661957_664604777074941_6482378656495697920_n.jpg",
+                          "https://scontent.cdninstagram.com/t51.2885-15/e35/c2.0.593.593/17587164_419981581685369_7154006392200757248_n.jpg",
+                          "https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c180.0.720.720/17334237_1349139325129868_2582871075570319360_n.jpg",
+                          "https://scontent.cdninstagram.com/t51.2885-15/e35/c257.0.565.565/17268225_1785385098456115_720624666783252480_n.jpg",
+                          "https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c0.29.744.744/16228781_1682501608714558_8734191136039501824_n.jpg",
+                          "https://scontent.cdninstagram.com/t51.2885-15/e35/c127.0.498.498/16464279_1886102308331717_8247244932478140416_n.jpg",
+                          "https://scontent.cdninstagram.com/t51.2885-15/s640x640/sh0.08/e35/c0.77.747.747/16464727_409510502720441_9181544613079416832_n.jpg"]
     for str in urls {
       let item = DataSource.init(imageURL: str, desc: str + str)
       dataSource.append(item)
@@ -55,11 +74,10 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
         if let image = img {
           cell.spinner.stopAnimating()
           if self.heightCache[url?.absoluteString ?? ""] ?? 0 < CGFloat(1) {
-//                let aspectRatioImg = image.size.height / image.size.width
-//            
-//                let a =  tableView.bounds.width - 32 + aspectRatioImg
-//             self.heightCache[url?.absoluteString ?? ""] = a + (self.dataSource[indexPath.row].desc.height(withConstrainedWidth: self.tableView.bounds.width - 52, font: UIFont.systemFont(ofSize: 17))) + 40
-            self.heightCache[url?.absoluteString ?? ""] = image.size.height + (self.dataSource[indexPath.row].desc.height(withConstrainedWidth: self.tableView.bounds.width - 52, font: UIFont.systemFont(ofSize: 17))) + 40
+                let aspectRatioImg = image.size.height / image.size.width
+            
+                let a =  tableView.bounds.width - 32 + aspectRatioImg
+             self.heightCache[url?.absoluteString ?? ""] = a + (self.dataSource[indexPath.row].desc.height(withConstrainedWidth: self.tableView.bounds.width - 52, font: UIFont.systemFont(ofSize: 17))) + 40
             tableView.beginUpdates()
             tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.none)
             tableView.endUpdates()
